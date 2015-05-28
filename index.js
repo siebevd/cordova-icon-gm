@@ -1,9 +1,9 @@
-var fs     = require('fs');
-var xml2js = require('xml2js');
-var gm     = require('gm');
-var colors = require('colors');
-var _      = require('underscore');
-var Q      = require('q');
+var fs     = require('fs'),
+    xml2js = require('xml2js'),
+    gm     = require('gm'),
+    colors = require('colors'),
+    _      = require('underscore'),
+    Q      = require('q');
 
 /**
  * Check which platforms are added to the project and return their icon names and sized
@@ -47,7 +47,6 @@ var getPlatforms = function (projectName) {
             { name : 'drawable-ldpi/icon.png',  size : 36 },
             { name : 'drawable-mdpi/icon.png',  size : 48 },
             { name : 'drawable-xhdpi/icon.png', size : 96 },
-            { name : 'drawable-xxhdpi/icon.png', size : 144 },
         ]
     });
     // TODO: add all platforms
@@ -105,6 +104,8 @@ var getProjectName = function () {
     return deferred.promise;
 };
 
+
+
 /**
  * Resizes and creates a new icon in the platform's folder.
  *
@@ -114,17 +115,16 @@ var getProjectName = function () {
  */
 var generateIcon = function (platform, icon) {
     var deferred = Q.defer();
-    gm(settings.ICON_FILE)
-        .resize(width, height)
-        .gravity('center')
-        .write(file, function(err) {
-          
-            if (err) {
-                deferred.reject(err);
-            } else {
-                deferred.resolve();
-                display.success(splash.name + ' created');
-            }
+
+
+     gm(settings.ICON_FILE )
+        .write(platform.iconsPath + icon.name, function(err) {
+          if (err) {
+            deferred.reject(err);
+          } else {
+            deferred.resolve();
+            display.success(icon.name + ' created');
+          }
         });
 
     return deferred.promise;
@@ -251,6 +251,5 @@ var run = function(){
 }
 
 module.exports = {
-  generate: run
-};
-
+    generate : run
+}
