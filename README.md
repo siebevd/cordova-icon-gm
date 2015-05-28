@@ -44,10 +44,10 @@ That's it. Now every time you ```cordova build```, the icons will be auto genera
 
 2. Create `icon-generator.js`
     ```javascript
-    var splash = require('cordova-icon-gm');
+    var icon = require('cordova-icon-gm');
     
     module.exports = function() {
-      return splash.generate();
+      return icon.generate();
     };
     ```
 
