@@ -1,7 +1,7 @@
 {
   "name": "cordova-icon-gm",
   "version": "0.0.1",
-  "description": "Automatic icon resizing for Cordova",
+  "description": "Automatic icon resizing for Cordova With Graphicsmagick",
   "main": "index.js",
   "preferGlobal": "true",
   "directories": {

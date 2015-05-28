@@ -36,6 +36,21 @@ Then give the script +x permission:
 
 That's it. Now every time you ```cordova build```, the icons will be auto generated.
 
+
+
+### Automated usage
+
+1. `npm install git+https://github.com/siebevd/cordova-icon-gm --save-dev`
+
+2. Create `icon-generator.js`
+    ```javascript
+    var splash = require('cordova-icon-gm');
+    
+    module.exports = function() {
+      return splash.generate();
+    };
+    ```
+
 ### Requirements
 
 - ImageMagick
